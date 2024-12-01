@@ -1,34 +1,12 @@
 import { Button, Text, View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { PostContext } from '../../Context/PostContext';
 import Post from '../../Components/Post';
 import NewPostForm from '../../Components/NewPostForm';
 
 export default function Feed({ navigation }) {
-  const [posts, setPosts] = useState([
-    {
-      _id: 1,
-      username: 'James',
-      body: 'Mobile development is fun!',
-      time: '2023-10-24T00:41:59.057Z',
-      tag: 'news',
-    },
-    {
-      _id: 2,
-      username: 'Sidd',
-      body: 'I just finished watching another movie. It was interesting, but kind of boring :(',
-      time: '2023-10-23T00:41:59.057Z',
-      tag: 'entertainment',
-    },
-    {
-      _id: 3,
-      username: 'Jerry',
-      body: 'I am excited to see everyone become friends!',
-      time: '2023-10-25T00:41:59.057Z',
-      tag: '',
-    },
-  ]);
-  const [newId, setNewId] = useState(posts.length + 1);
+  const { posts, addNewPost } = useContext(PostContext);
   const [filterTag, setFilterTag] = useState('');
   const [sortOption, setSortOption] = useState('newest');
   const [displayedPosts, setDisplayedPosts] = useState(posts);
@@ -39,18 +17,6 @@ export default function Feed({ navigation }) {
 
   const navigateToDetails = (post) => {
     navigation.navigate('PostDetails', post);
-  };
-
-  const addNewPost = (newPost) => {
-    const newPostWithMetadata = {
-      ...newPost,
-      _id: newId,
-      time: new Date().toISOString(),
-      tag: newPost.tag || '',
-    };
-    const updatedPosts = [...posts, newPostWithMetadata];
-    setPosts(updatedPosts);
-    setNewId((id) => id + 1);
   };
 
   useEffect(() => {
