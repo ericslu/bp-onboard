@@ -1,10 +1,6 @@
-## LA Blueprint Developer Onboarding Project 2023
+## LA Blueprint Developer Onboarding Project 2024
 Created by: James, Siddharth
 This project is built on React Native Expo intended to teach new developers and returning developers important skills in order to prepare them for their project teams.
-### Goals for beginners:
-This is meant to introduce you to basic React. You will consider ways to build out new features from their screens to their components. Additionally, you'll also be working on some essential frontend problems that you might face when developing for a project team.
-### Goals for returners:
-This is meant to be good practice and an opportunity to challenge yourself. You should be able to quickly remind yourself the basics of React and fullstack development with challenges in database structuring and server route creation.
 
 ### Setup:
 1)

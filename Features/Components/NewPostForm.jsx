@@ -1,4 +1,3 @@
-// Features/Feed/Components/NewPostForm.jsx
 import { Button, TextInput } from 'react-native';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -6,11 +5,13 @@ import PropTypes from 'prop-types';
 export default function NewPostForm({ addNewPost }) {
   const [username, setUsername] = useState('');
   const [body, setBody] = useState('');
+  const [tag, setTag] = useState('');
 
   const handleAddPost = () => {
-    addNewPost({ username, body });
+    addNewPost({ username, body, tag });
     setUsername('');
     setBody('');
+    setTag('');
   };
 
   return (
@@ -18,12 +19,17 @@ export default function NewPostForm({ addNewPost }) {
       <TextInput
         placeholder="Who is this?"
         onChangeText={setUsername}
-				value={username}
+        value={username}
       />
       <TextInput
         placeholder="What are you Printing?"
         onChangeText={setBody}
-				value={body}
+        value={body}
+      />
+      <TextInput
+        placeholder="Enter tag"
+        onChangeText={setTag}
+        value={tag}
       />
       <Button title="Print" onPress={handleAddPost} />
     </>
